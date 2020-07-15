@@ -53,7 +53,7 @@ Module.register('MMM-WindyV2', {
 
 	getScripts: function() {
 		return [
-			'https://unpkg.com/leaflet@0.7.7/dist/leaflet.js',
+			'https://unpkg.com/leaflet@1.4.0/dist/leaflet.js',
 			];
 	},
 
@@ -91,7 +91,7 @@ Module.register('MMM-WindyV2', {
 
 		self.loaded = false;
 		var scripts = [
-			'https://api4.windy.com/assets/libBoot.js'
+      'https://api.windy.com/assets/map-forecast/libBoot.js'
 			];
 
 		var loadScripts = function(scripts) {
