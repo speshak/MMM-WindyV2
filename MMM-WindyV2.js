@@ -77,7 +77,7 @@ Module.register('MMM-WindyV2', {
 
 		return wrapper;
 	},
-  
+
 	start: function() {
 		let self = this;
 		Log.info('Starting module: ' + this.name);
@@ -93,7 +93,7 @@ Module.register('MMM-WindyV2', {
 		var scripts = [
 			'https://api4.windy.com/assets/libBoot.js'
 			];
-		
+
 		var loadScripts = function(scripts) {
 			var script = scripts.shift();
 			var el = document.createElement('script');
@@ -145,7 +145,7 @@ Module.register('MMM-WindyV2', {
 
 						var h = overlayers.length;
 						h=h-1;
-						
+
 						var i = 0;
 						setInterval( ()=> {
 							i = (i === h ? 0 : i + 1 ),
@@ -153,12 +153,12 @@ Module.register('MMM-WindyV2', {
 							Log.info('<<<>>> Current showing Overlay: '+overlays);
 						}, this.config.delayRotate);
 					}
-					
+
 					const {store,map,overlays} = windyAPI;
 					//var overlay = store.get('overlay');
 					var windMetric = overlays.wind.metric;
 					store.set('overlay',this.config.showLayer);
-									
+
 					var topLayer = L.tileLayer('http://b.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 							attribution: 'Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, ',
 							minZoom: 12,
@@ -182,7 +182,7 @@ Module.register('MMM-WindyV2', {
 /////////////////////////////////////////////////////////////////////////////////////
     notificationReceived(notification, payload, sender) {
 		if (notification === 'CHANGEWIND') {
-				const options = {key: this.config.apiKey};			
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
@@ -201,7 +201,7 @@ Module.register('MMM-WindyV2', {
 
 /////////////////////////////////////////////////////////////////////////////////////
 		} else if (notification === 'CHANGERAIN') {
-				const options = {key: this.config.apiKey};			
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
@@ -216,10 +216,10 @@ Module.register('MMM-WindyV2', {
 					//var overlay = store.get('overlay');
 				store.set('overlay','rain');
 				});
-		
+
 /////////////////////////////////////////////////////////////////////////////////////
 		} else if (notification === 'CHANGERAIN') {
-				const options = {key: this.config.apiKey};			
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
@@ -236,7 +236,7 @@ Module.register('MMM-WindyV2', {
 
 /////////////////////////////////////////////////////////////////////////////////////
 		} else if (notification === 'CHANGECLOUDS') {
-				const options = {key: this.config.apiKey};			
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
@@ -253,7 +253,7 @@ Module.register('MMM-WindyV2', {
 
 /////////////////////////////////////////////////////////////////////////////////////
 		} else if (notification === 'CHANGETEMP') {
-				const options = {key: this.config.apiKey};			
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
@@ -267,10 +267,10 @@ Module.register('MMM-WindyV2', {
 					}
 				store.set('overlay','temp');
 				});
-		
+
 /////////////////////////////////////////////////////////////////////////////////////
 		} else if (notification === 'CHANGEPRESSURE') {
-				const options = {key: this.config.apiKey};			
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
@@ -293,7 +293,7 @@ Module.register('MMM-WindyV2', {
 						}
 						if (window.W.windyBoot) {
 						window.W = Object.assign({}, window.copy_of_W);
-						}			
+						}
 			windyInit (options,windyAPI => {
 				const {store,map} = windyAPI;
 					if (this.config.retainZoom) {
@@ -304,13 +304,13 @@ Module.register('MMM-WindyV2', {
 
 /////////////////////////////////////////////////////////////////////////////////////
 		} else if (notification === 'CHANGEWAVES') {
-				const options = {key: this.config.apiKey};	
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
 						if (window.W.windyBoot) {
 						window.W = Object.assign({}, window.copy_of_W);
-						}		
+						}
 			windyInit (options,windyAPI => {
 				const {store,map} = windyAPI;
 					if (this.config.retainZoom) {
@@ -398,16 +398,16 @@ Module.register('MMM-WindyV2', {
 					currentZoom=zLevel;
 				});
 
-/////////////////////////////////////////////////////////////////////////////////////			
-			
+/////////////////////////////////////////////////////////////////////////////////////
+
 			} else if (notification === 'ROTATELAYER') {
-				const options = {key: this.config.apiKey};	
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
 						if (window.W.windyBoot) {
 						window.W = Object.assign({}, window.copy_of_W);
-						}		
+						}
 
 				windyInit (options, windyAPI => {
 						const {store,map} = windyAPI;
@@ -425,15 +425,15 @@ Module.register('MMM-WindyV2', {
 				});
 
 /////////////////////////////////////////////////////////////////////////////////////
-		
+
 			} else if (notification === 'DEFAULTZOOM') {
-				const options = {key: this.config.apiKey};	
+				const options = {key: this.config.apiKey};
 					if (!window.copy_of_W) {
 						window.copy_of_W = Object.assign({}, window.W);
 						}
 						if (window.W.windyBoot) {
 						window.W = Object.assign({}, window.copy_of_W);
-						}		
+						}
 				windyInit (options, windyAPI => {
 						const {store,map} = windyAPI;
 						var topLayer = L.tileLayer('http://b.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -452,7 +452,7 @@ Module.register('MMM-WindyV2', {
 							});
 					map.setZoom(this.config.zoomLevel);
 					currentZoom = this.config.zoomLevel;
-				});		
+				});
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -462,11 +462,11 @@ Module.register('MMM-WindyV2', {
 /////////////////////////////////////////////////////////////////////////////////////
 
 			} else if (notification === 'CANCELANIMATION') {
-				document.getElementById('playpause').click();	
+				document.getElementById('playpause').click();
 			}
 
     },
-  
+
   getStyles: function() {
     return [
       'MMM-WindyV2.css'
